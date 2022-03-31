@@ -21,6 +21,23 @@
 
 \section{Round-off Errors And Computer Arithmetic}
 \label{sec:Round-off errors and Computer Arithmetic}
+Here we are looking at the two formulae
+\[
+  e^{-5} \approx \sum_{i=0}^n \frac{(-5)^i}{i!}
+  \qquad
+  e^{-5} = \frac{1}{e^5} \approx \sum_{i=0}^n \frac{1}{\frac{5^i}{i!}}.
+\]
+As it can be seen in \autoref{fig:abs_error}, Formula 2 is converges much faster 
+to the exact value. This is because the sum in Formula 1 is not uniform and has 
+large jumps for small $i$.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{build/Ex1.pdf}
+	\caption{Plot of the absolute error for different $n$.}
+	\label{fig:abs_error}
+\end{figure}
 
 \section{Algorithms And Convergence}
 \label{sec:Algorithms and Convergence}
