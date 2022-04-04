@@ -3,7 +3,7 @@ all: build/main.pdf
 build:
 	mkdir -p build
 
-build/main.pdf: build main.tex build/Ex1.pdf
+build/main.pdf: build main.tex build/Ex1.pdf build/Ex2.pdf
 	  TEXINPUTS=build: \
 	  BIBINPUTS=build: \
 	  max_print_line=1048576 \
@@ -16,6 +16,10 @@ build/main.pdf: build main.tex build/Ex1.pdf
 
 build/Ex1.pdf: Exercise1.py build
 	python Exercise1.py
+
+build/Ex2.pdf: Exercise2.py build
+	python Exercise2.py
+
 
 clean:
 	rm -rf build

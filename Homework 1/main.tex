@@ -36,11 +36,34 @@ large jumps for small $i$.
 	\centering
 	\includegraphics{build/Ex1.pdf}
 	\caption{Plot of the absolute error for different $n$.}
-	\label{fig:abs_error}
+	\label{fig:abs_error1}
 \end{figure}
 
 \section{Algorithms And Convergence}
 \label{sec:Algorithms and Convergence}
+The absolute error is plotted in \autoref{fig:abs_error2}. To calculate the degree of each formula, so 
+$p$ such that
+\[
+  \vert \gamma_n - \gamma_inf \vert = K \frac{1}{n^p},
+\]
+I utilized the curve\_fit from the scipy.optimize library. I defined a function
+\[
+  f(n, K, p) = \frac{K}{n^p}
+\]
+so that the curve\_fit method could find optimal $K$ and $p$. This gave the results
+\begin{align}
+  K_1 &= 0.498 & p_1 &= 0.999, \\
+  K_2 &= 0.697 \pm 0.089 & p_2 &= 0.74 \pm 0.023.
+\end{align}
+So we can tell that the first formula is of order $p\approx1$ and formula 2 $p\approx \frac{3}{4}$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{build/Ex2.pdf}
+	\caption{Plot of the absolute error and the fitted curve for different $n$.}
+	\label{fig:abs_error2}
+\end{figure}
+
 
 \section{Generating Random Number With Power Law Distribution}
 \label{sec:Generating Random Number With Power Law Distribution}
