@@ -27,7 +27,7 @@ Here we are looking at the two formulae
   \qquad
   e^{-5} = \frac{1}{e^5} \approx \sum_{i=0}^n \frac{1}{\frac{5^i}{i!}}.
 \]
-As it can be seen in \autoref{fig:abs_error}, Formula 2 is converges much faster 
+As it can be seen in \autoref{fig:abs_error1}, Formula 2 is converges much faster 
 to the exact value. This is because the sum in Formula 1 is not uniform and has 
 large jumps for small $i$.
 
@@ -70,6 +70,17 @@ So we can tell that the first formula is of order $p\approx1$ and formula 2 $p\a
 
 \section{Trajectory Of A Random Walk}
 \label{sec:Trajectory Of A Random Walk}
+
+\subsection{Normal Walker}
+\label{sec:Normal Walker}
+In this part we take a look at the normal walker, i.e. a walker that can return.
+In \autoref{fig:dist-returning} the trace for eight returning walkers is plotted. 
+\begin{figure}[H]
+	\centering
+	\includegraphics{build/many_walks.pdf}
+	\caption{Eight random walker`s trace plotted for 1000 steps.}
+  \label{fig:dist-returning}
+\end{figure}
 
 
 \end{document}
