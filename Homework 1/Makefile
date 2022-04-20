@@ -8,10 +8,14 @@ build/Ex1.pdf: Exercise1.py build
 
 build/Ex2.pdf: Exercise2.py build
 	python Exercise2.py
+	
+build/Ex3.pdf: Exercise3.py build
+	python Exercise3.py
 
 build/many_walks.pdf: Exercise4.py build
 	python Exercise4.py
 
+build/main.pdf: build/Ex3.pdf
 
 build/main.pdf: build main.tex build/Ex1.pdf build/Ex2.pdf build/many_walks.pdf
 	  TEXINPUTS=build: \

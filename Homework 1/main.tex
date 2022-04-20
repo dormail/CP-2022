@@ -12,8 +12,13 @@
 % page setup
 \usepackage[a4paper, margin=2.5cm]{geometry}
 
+\usepackage{multicol} % multicolumn text
+
 % references
 \usepackage{hyperref}
+
+\usepackage{unicode-math}
+
 
 \begin{document}
 \maketitle
@@ -30,7 +35,6 @@ Here we are looking at the two formulae
 As it can be seen in \autoref{fig:abs_error1}, Formula 2 is converges much faster 
 to the exact value. This is because the sum in Formula 1 is not uniform and has 
 large jumps for small $i$.
-
 
 \begin{figure}[H]
 	\centering
@@ -67,6 +71,80 @@ So we can tell that the first formula is of order $p\approx1$ and formula 2 $p\a
 
 \section{Generating Random Number With Power Law Distribution}
 \label{sec:Generating Random Number With Power Law Distribution}
+This part consists of two parts: Firstly, we have to derive a function $f$ such that $y = f(x)$ follows
+a power law $P(y) = A \cdot y^{-\alpha}, y \in [2, \inf\}$ when $x$ is evenly distrubuted along $(0,1]$. 
+In the second part we will implement it in python and test the generated distribution.
+
+\subsection{Deriving $f(x)$}
+For $f(x)$ we invert the comulative distribution function (CDF) from $y$. Firstly, we will simplify $P(y)$ 
+by finding $A(\alpha$ (they are not independent because of the normalization condition):
+\begin{align*}
+  \int_{-\infty}^{\infty} P(y) \, \symup{d}y 
+  &= \int_{2}^{\infty} P(y) \, \symup{d}y \\
+  &= \int_{2}^{\infty} A y^{-\alpha} \, \symup{d}y \\
+  &= \frac{-A}{-\alpha+1} \left. y^{-\alpha+1} \right\vert_2^\infty \\
+  &= \frac{A}{\alpha - 1} 2^{1-\alpha} \overset{!}{=} 1 \\
+  \Leftrightarrow
+  A &= (\alpha - 1) 2^{\alpha - 1}
+\end{align*}
+Now we are ready to compute the CDF of $P(y)$:
+\begin{align*}
+  \symup{CDF}(y) &= \int_{-\infty}^{y} P(y^\prime) \, \symup{d}y^\prime  \\
+                 &= \int_{2}^{y} (\alpha - 1) 2^{\alpha -1} y^{\prime-\alpha} \, \symup{d}y^\prime \\
+                 &= (\alpha-1) 2^{\alpha-1} \cdot \frac{1}{-\alpha+1} \left. y^{\prime -\alpha +1} \right\vert_2^y \\
+                 &= -2^{\alpha-1} \left[ y^{-\alpha+1} - 2^{-\alpha +1} \right] \\
+                 &= 1 - \left( \frac{y}{2} \right)^{1-\alpha}.
+\end{align*}
+Finally we can invert it to find $y(x)$:
+\begin{align*}
+  \symup{CDF}(y) &= x \\
+  x &= 1 - \left( \frac{y}{2} \right)^{1-\alpha} \\
+  \Leftrightarrow 
+  1 - x &= \left( \frac{y}{2} \right)^{1-\alpha} \\
+  \Leftrightarrow
+  2 \cdot \left(1 - x\right)^{\frac{1}{1-\alpha}} = y = f(x).
+\end{align*}
+
+\subsection{Implementation and Tests}
+\label{sec:implementation}
+To test the transformation 
+\[
+  f(x) = 2 \cdot \left(1 - x\right)^{\frac{1}{1-\alpha}}
+\]
+we will generate $10000$ samples of $x$ with the numpy.random.rand function and apply $f$ to all of them. For
+$\alpha$ we chose the value 5.
+The matplotlib.pyplot.hist function will sort those into 50 bins. 
+
+To test the power-law-like behavior we will proceed like in \autoref{sec:Algorithms and Convergence} with 
+the curve\_fit from the scipy.optimize library. Since we have intervals, we first compute the middle point
+of each interval and than fit the function
+\[
+  p(x, A, \alpha) = A \cdot x^{-\alpha}
+\]
+to the data pairs (midpoint, occurences). This gives us a fit parameter 
+\[
+  \alpha = 5.24 \pm 0.017,
+\]
+so a deviation of about $4.8\%$ from the true $\alpha = 5$. The data histogram and the curve fit are plotted in 
+\autoref{fig:ex3}.
+
+As suggested in the exercise, there is also a log-log-plot. One visible feature of a power law is the linear-like
+slope in this plot which should be $\approx \alpha$. This can be either confirmed by looking at 
+\autoref{fig:ex3-log} or taking our measured $\alpha$, which corresponds to the actual log-log-slope.
+\begin{figure}[H]
+	\centering
+	\includegraphics{build/Ex3.pdf}
+	\caption{Generated powerlaw distribution and measured exponent for $\alpha = 5$, $10000$ samples.}
+  \label{fig:ex3}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{build/Ex3-log.pdf}
+	\caption{Double logarithmic plot of the generated data $y = f(x)$ with 10000 samples.}
+  \label{fig:ex3-log}
+\end{figure}
+
+
 
 \section{Trajectory Of A Random Walk}
 \label{sec:Trajectory Of A Random Walk}
