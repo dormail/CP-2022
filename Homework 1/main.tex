@@ -152,11 +152,23 @@ slope in this plot which should be $\approx \alpha$. This can be either confirme
 \subsection{Normal Walker}
 \label{sec:Normal Walker}
 In this part we take a look at the normal walker, i.e. a walker that can return.
-In \autoref{fig:dist-returning} the trace for eight returning walkers is plotted. 
+In \autoref{fig:trace-returning} the trace for eight returning walkers is plotted. 
+To test the order of the distance after some amount of steps, we simulate 1000 walkers
+for 1000 steps each and compute the distance from the origin for each step and take the average.
+The result can be seen in \autoref{fig:dist-returning}. One key feature is that the function 
+Distance(steps) has the same slop in the log-log-plot as a function $\sqrt{\text{steps}}$, which means that
+$R(t) \sim \sqrt{t}$.
 \begin{figure}[H]
 	\centering
 	\includegraphics{build/many_walks.pdf}
 	\caption{Eight random walker`s trace plotted for 1000 steps.}
+  \label{fig:trace-returning}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics{build/Steps-Distance.pdf}
+  \caption{A random walkers distance to the origin after $n$ steps, compared to $\sqrt{t}$ in a log-log-plot. 
+  Notice that $\sqrt{t}$ and the distance data have the same slope, so have the same exponential behavior.}
   \label{fig:dist-returning}
 \end{figure}
 
