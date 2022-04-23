@@ -172,5 +172,35 @@ $R(t) \sim \sqrt{t}$.
   \label{fig:dist-returning}
 \end{figure}
 
+\subsection{Self-avoiding walk (SAW)}
+\label{sec:Normal Walker}
+For a self avoiding walker we modified our existing program to check all former locations if it has been at the new proposed location before. If the script offered 10 illegal moves in a row it will assume that the walker stuck and
+will set all coming positions to the last one. After about 100 steps most walkers were terminating in our
+experiments. In \autoref{fig:trace-SAW} eight traces are shown. The distance can be analyzed as well. In 
+\autoref{fig:distance-saw} the distance of the walker has been plotted as before; for a better comparison the 
+normal walker has been added to the plot as well. Here it can be seen that after about 100 steps most walkers 
+terminated already because the average distance does not got further.
+
+Before 30 steps however, the distance $R(t)$ is growing much faster in case of a SAW. A curve fit delivered the
+result 
+\[
+  R \sim t^\frac{1}{d} \qquad \text{with } d = 1.6314.
+\]
+The parameter $d$ is called the diffusion dimension.
+\begin{figure}
+	\centering
+	\includegraphics{build/many_walks-SAW.pdf}
+	\caption{Eight Self-avoiding random walker`s trace plotted for 1000 steps. Note that most walkers terminate 
+           before because they are stuck in a position.}
+  \label{fig:trace-SAW}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics{build/Steps-Distance-SAW.pdf}
+  \caption{Distance from origin plotted for a self avoiding and normal walker. For the curve fit the first, fast 
+            growing part has been used as marked in the plot.}
+  \label{fig:distance-saw}
+\end{figure}
+
 
 \end{document}
