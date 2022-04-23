@@ -72,12 +72,12 @@ So we can tell that the first formula is of order $p\approx1$ and formula 2 $p\a
 \section{Generating Random Number With Power Law Distribution}
 \label{sec:Generating Random Number With Power Law Distribution}
 This part consists of two parts: Firstly, we have to derive a function $f$ such that $y = f(x)$ follows
-a power law $P(y) = A \cdot y^{-\alpha}, y \in [2, \inf\}$ when $x$ is evenly distrubuted along $(0,1]$. 
+a power law $P(y) = A \cdot y^{-\alpha}, y \in [2, \inf)$ when $x$ is evenly distrubuted along $(0,1]$. 
 In the second part we will implement it in python and test the generated distribution.
 
 \subsection{Deriving $f(x)$}
 For $f(x)$ we invert the comulative distribution function (CDF) from $y$. Firstly, we will simplify $P(y)$ 
-by finding $A(\alpha$ (they are not independent because of the normalization condition):
+by finding $A(\alpha)$ (they are not independent because of the normalization condition):
 \begin{align*}
   \int_{-\infty}^{\infty} P(y) \, \symup{d}y 
   &= \int_{2}^{\infty} P(y) \, \symup{d}y \\
@@ -186,7 +186,13 @@ result
 \[
   R \sim t^\frac{1}{d} \qquad \text{with } d = 1.6314.
 \]
-The parameter $d$ is called the diffusion dimension.
+The parameter $d$ is called the diffusion dimension. Comparing it to $d = 2$ for the non-selfavoiding walker, 
+we can see a significant difference which can be interpreted as the SAW gaining distance more faster. This is 
+to be expected, since the SAW gets ``pushed away`` from the origin because of it`s history. As there are 
+some walkers staying close to the origin in \autoref{trace-returning}, this is not as feasible for the SAW.
+After 100 steps however those statements no longer hold since many walkers are stuck in a position and 
+can not gain distance, while the normal walker can continue with $R(t) \sim \sqrt{t}$ as they are no 
+limited.
 \begin{figure}
 	\centering
 	\includegraphics{build/many_walks-SAW.pdf}
