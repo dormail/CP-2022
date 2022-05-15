@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[twocolumn]{article}
 
 
 \author{Matthias Maile}
@@ -24,6 +24,106 @@
 \maketitle
 \tableofcontents
 
+\section{Differential Equations}
+In this part the ordinary differential equation
+\[
+  y^\prime = t ( 1-y^2)
+\]
+has been solved numerically. It can be solved exactly by seperating the variables or by 
+\href{https://www.wolframalpha.com/input?i=y%27+%3D+t+*+%281-y%5E2%29%2C+y%280%29+%3D+-0.5}{not living under a rock}. With the
+later you get the result 
+\[
+  y(t) = \frac{e^{t^2} - 3}{3 + e^{t^2}}.
+\]
+The error of each numerical method has been plotted in \autoref{fig:error-ode}. The maximum error for many different
+$dt$ values is plotted in \autoref{fig:error2-ode}. I compared the Runge-Kutta and Euler method as given and used the
+\href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html}{scipy.integrat.odeint}
+method which uses something from Fortran under the hood.
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex1-1.pdf}
+	\caption{Error of Eulers method, Runge Kutta and scipy.integrate.odeint plotted for $dt = 0.01$ and $dt = 0.005$.}
+  \label{fig:error-ode}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex1-2.pdf}
+	\caption{Maximum error of the different integration methods for different time steps $dt$.}
+  \label{fig:error2-ode}
+\end{figure}
 
+\section{Solution of equation and basin of attraction}
+\subsection{Newton`s method to solve an equation}
+In this part the equation
+\begin{equation}
+  0 = \frac12 + \frac14 x^2 - x \sin x - \frac12 \cos 2x
+  \label{eqn:newton}
+\end{equation}
+will be solved using Newton`s method. The result is shown in \autoref{fig:smallx0} for the initial value $x_0 =
+\frac{\pi}{2}$. It is also shown for $x_0 = 5 \pi$ and $x_0 = 10 \pi$ in \autoref{fig:mediumx0} and
+\autoref{fig:largex0}. The point where the right side in \autoref{eqn:newton} is zero has a vanishing gradient, thus Newton`s method is not perfect
+in its default form, though it still converged here.
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex2-1.pdf}
+  \caption{Newton`s method to solve \autoref{eqn:newton} with $x_0 = \frac{\pi}{2}$.}
+  \label{fig:smallx0}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex2-2.pdf}
+  \caption{Newton`s method to solve \autoref{eqn:newton} with $x_0 = 5\pi$.}
+  \label{fig:mediumx0}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex2-3.pdf}
+  \caption{Newton`s method to solve \autoref{eqn:newton} with $x_0 = 10\pi$.}
+  \label{fig:largex0}
+\end{figure}
+
+\section{Roessler Attractor}
+In this part we look at the Roessler attractor. The attractor itself is plotted for $c=5.7$, $c=6$and $c=14$ in
+\autoref{fig:smallc}, \autoref{fig:mediumc} and \autoref{fig:largec}. To look at the periodic behaior in a more precise
+way the the exercise suggested to look at $y(t)$. The Time evolution and its peak found with scipy are plotted in
+\autoref{fig:smallc=yt}, \autoref{fig:mediumc-yt} and \autoref{fig:largec-yt}.
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Exercise3-5.7-3d.pdf}
+  \caption{Roessler attractor for $c = 5.7$.}
+  \label{fig:smallc}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Exercise3-6-3d.pdf}
+  \caption{Roessler attractor for $c = 6$.}
+  \label{fig:mediumc}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Exercise3-14-3d.pdf}
+  \caption{Roessler attractor for $c = 14$.}
+  \label{fig:largec}
+\end{figure}
+
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Exercise3-5.7-2d-t-y.pdf}
+  \caption{Peaks of $y$ for $c = 5.7$.}
+  \label{fig:smallc-yt}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Exercise3-6-2d-t-y.pdf}
+  \caption{Peaks of $y$ for $c = 6$.}
+  \label{fig:mediumc-yt}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Exercise3-14-2d-t-y.pdf}
+  \caption{Peaks of $y$ for $c = 14$.}
+  \label{fig:largec-yt}
+\end{figure}
+\section{Diffusion limited aggregation}
 
 \end{document}
