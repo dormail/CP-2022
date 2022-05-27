@@ -1,3 +1,51 @@
 \section{Benford`s law}
 \label{sec:exercise-4}
+In this part we take a look at Benford`s law which suggests that for some numerical data set the initial digits $d$ are
+distributed logarithmically
+\begin{equation}
+  p(d) = \log\left(1 + \frac{1}{d}\right)
+  \label{eqn:benford}
+\end{equation}
+and is based on the assumption that the dataset is not limited to specific to a scale.
+%
+%
+% The proof
+%
+%
+
+One example for a dataset that obeys Benfords law are physical constants, which can be scraped from wikipedia as it has
+been done in the programming tutorial. \autoref{fig:benford-decimal-1} shows the distribution for the first digit in the
+dataset and shows good agreement between the real distribution and what Benfords law suggests. The scale free behaviour
+has been tested as well by multiplying all numbers with $5$ before counting first digits in
+\autoref{fig:benford-decimal-5}, and as it can be seen it still holds.
+
+One really fancy feature of Benford`s law is that it can be applied to different number systems: By changing the base of
+the logarithm in \autoref{eqn:benford}, it can be applied to every other system as well. \autoref{fig:benford-octal} and
+\autoref{fig:benford-hexadec} show that it is still applicable for octal (base 8) and hexadecimal (base 16).
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex4-decimal.pdf}
+  \caption{Benfords law for decimal system.}
+  \label{fig:benford-decimal-1}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex4-decimal-factor5.pdf}
+  \caption{Scale free behaviour of Benford`s law: The same distribution as in \autoref{fig:benford-decimal-1} with the
+  dataset multiplied with $5$.}
+  \label{fig:benford-decimal-5}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex4-octal.pdf}
+  \caption{Benfords law for octal (base 8) number system.}
+  \label{fig:benford-octal}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex4-hexadec.pdf}
+  \caption{Benfords law for hexadecimal (base 16) number system.}
+  \label{fig:benford-hexadec}
+\end{figure}
+
 
