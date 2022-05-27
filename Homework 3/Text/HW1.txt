@@ -1,0 +1,137 @@
+PH413 Introduction to Computational Physics : Homework 1 Problems
+Seungwoong Ha∗
+Ph413TA, Complex Systems and Statistical Physics Lab,
+Department of Physics, KAIST, Daejeon, Korea
+Hawoong Jeong†
+Department of Physics, KAIST, Daejeon, Korea
+(Dated: March 30, 2022)
+I.
+PROBLEM 1. ROUND-OFF ERRORS AND
+COMPUTER ARITHMETIC
+Many non-polynomial functions involves sum of higher
+order sums. In this example, you will compare two different sum for expression for the same values.
+Taylor polynomial of degree n for f (x) = ex is
+PThe
+n
+i
+i=0 (x /i!). Use the Taylor polynomial of degree of n
+to find an approximation to e−5 by each of the following
+methods.
+n
+X
+(−5)i
+i=0
+i!
+(1)
+2. Formula 2 : Using inverse value
+e−5 =
+1
+1
+≈ Pn 5i
+5
+e
+i=0 i!
+(2)
+Since both formulae absolutely converges, infinite sum
+of both formula will indicate the same value. However,
+due to finite amount of number that digits actually store,
+they have different degree of error.
+QUESTIONS
+1. Draw absolute error (absolute value of the error)
+for degree n, for both methods.
+2. Which formula, equation 1 and 2, is closer to exact
+value? Explain why.
+II.
+k=1
+2. Formula 2 : Vacca (1910), Gerst (1969)
+γn =
+n
+X
+(−1)
+k floor(log2 k)
+k=1
+k
+PROBLEM 2. ALGORITHMS AND
+CONVERGENCE
+Euler-Mascheroni constant γ ≈ 0.5772156649015... appears in many equations, which involves approximation
+of harmonic sum to logarithmic function. In this example, you will use two formulae to calculate the constant.
+Compare the error of each sequence to exact constannumber |γn − γ∞ (= γ)| = K|βn |. In nearly every situation we use
+1
+(5)
+βn = p
+n
+for some number p. This number is often called “The
+degree of error”. Calculate the degree of each formula.
+QUESTIONS
+1. Plot sequence of absolute error for each formula.
+2. Calculate the degree of error for each formula.
+III. PROBLEM 3. GENERATING RANDOM
+NUMBER WITH POWER LAW DISTRIBUTION
+Most of random numbers in ideal space involves well behaving distributions such as Poissonian distribution in
+probabilistic events, or Gaussian random number related
+to errors or accumulated variables. On the other hand,
+a random number with power law distribution, such as
+P (x) ∼ x−α in x ∈ [xmin , ∞), is frequently used in various randomness involving long-term correlations, financial or real world noises.
+QUESTIONS
+1. Derive function y = f (x) that obeys output distribution as given power law distribution:
+y = f (x)
+∗ skyround2002@gmail.com
+† hjeong@kaist.edu
+(4)
+Where floor function means integer part of a real
+number.
+1. Formula 1 : Direct expansion
+e−5 ≈
+1. Formula 1 : Definition of Euler-Mascheroni constant
+!
+n
+X
+1
+γn =
+− ln n
+(3)
+k
+P (y) = Ay −α , y ∈ [2, ∞)
+P (x) = 1, x ∈ (0, 1]2
+Note that, smallest possible value for random variable y is 2.
+2. Generate random numbers with derived distribution function, and check the produced random
+numbers obey power-law distribution by drawing
+log-log plot. Your exponent in resulting distribution has to match with your original given α There
+are some subtle points to measure exact power-law
+exponent in a distribution. If you suggest any, additional point will be given.
+IV.
+2. Calculate the distance R(t) of random walker from
+the origin at each time step, and draw t vs. R(t)
+curve and show that R(t) ∼ t1/2 , i.e. in log-log plot
+slope of the curve being 1/2. (You may average over
+many simulations to get nice result.)
+3. [for extra point] Assume that random walker
+cannot visit the same point again, i.e. trace of the
+random walker cannot intersect ifself. (This is
+called Self-Avoiding Walk : SAW) Do the same job
+above for Self-Avoiding Walk, and find the diffusion dimension dw such that R(t) ∼ t1/dw . Discuss
+the result why SAW have the same or different dimension. Please note that it may not be easy to
+let random walker complete walk steps up to 1000
+steps.
+PROBLEM 4. TRAJECTORY OF A
+RANDOM WALK
+V.
+Consider 2-dimensional random walk on square lattice.
+Random walker can move up, down, left, right at each
+time step with equal probability.
+QUESTIONS
+1. Draw the trajectory of your random walker who
+starts at the origin after 1000 steps. You may
+use any graphing tools to represent many random
+walker’s trails.
+NOTES
+This homework is due April.
+20th (Sun),
+23:59:59 P.M.. Write your report about answers including diagrams and discussions. Please submit your
+report and codes. Your codes could be in either python
+file (.py) or Jupyter notebook file (.ipynb). Please gather
+your code into one zip file and upload it along with your
+PDF report. Please write your report via LATEX with
+graphs drawn with pyplot. If you have any questions
+about this homework, use question board in KLMS or
+personally e-mail to TA.

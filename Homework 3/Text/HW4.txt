@@ -1,0 +1,177 @@
+Homework 4 Problems
+Seungwoong Ha∗
+Ph413TA, Complex Systems and Statistical Physics Lab,
+Department of Physics, KAIST, Daejeon, Korea
+Hawoong Jeong†
+Department of Physics, KAIST, Daejeon, Korea
+(Dated: May 19, 2022)
+I.
+PROBLEM 1. BUFFON’S NEEDLE AND
+MEASURING PI
+“Buffon’s needle problem” is a question, originally
+posed by Comte de Buffon in 1733;
+Suppose we have a floor made of parallel
+strips of wood, each the same width, and we
+drop a needle onto the floor. What is the
+probability that the needle will lie across a
+line between two strips?
+II.
+PROBLEM 2. INTERACTING DYNAMIC
+SPINS
+Consider a system of “two fixed but freely rotating spins” with magnetic moment with interaction in
+3-dimension.
+This problem is one of very early example of integral geometry, and currently widely used in example of Monte Carlo studies. For convenience, assume length of needle
+FIG. 2. 2 fixed spins with angular degree of freedom.
+The corresponding Hamiltonian will be written as
+FIG. 1. The a needle lies across a line, while the b needle
+does not.
+is the same as distance between strips. The probability
+that the needle is placed across the strips is given as,
+Z π/2 Z l/2 sin θ
+4
+dxdθ
+(1)
+P =
+tπ
+θ=0
+x=0
+Problems
+A) Estimate the value of π using the empirical probability obtained by the simulation.
+B) Estimate standard error of the estimate for arbitrary number of needles n.
+∗ skyround2002@gmail.com
+† hjeong@kaist.edu
+H (m
+~ 1, m
+~ 2 , p~1 , p~2 )
+␁
+1
+|~
+p1 |2 + |~
+p2 |2
+= −J m
+~1·m
+~2+
+2I
+(2)
+In terms of polar cordinates of each spins,
+H (θ1 , φ1 , θ2 , φ2 , p1θ , p2θ , p1φ , p2φ )
+= −Jm1 m2 (sin θ1 sin θ2 cos (φ1 − φ2 ) + cos θ1 cos θ2 )
+!
+p21φ
+p22φ
+1
+2
+2
+p1θ + p2θ +
++
++
+2I
+sin2 θ1
+sin2 θ2
+(3)
+The probability of phase space point is proportional to
+Boltzmann factor, we can get a probability distribution
+and calculate desired parameters.
+P (θ1 , φ1 , θ2 , φ2 , p1θ , p2θ , p1φ , p2φ ) ∼ e−βH(θ1 ,φ1 ,··· ) (4)
+Using Markov Chain Monte Carlo (MCMC) studied in
+class, calculate the following measures numerically. Let2
+m1 = m2 = 1 and J = 1,β/IJ = x, for simplicity.
+Problems
+A) Plot the “Probability of Hamiltonian P (H) vs.
+H” for several values of the parameter ratio x.
+B) Plot the standard deviation of the angle difference m
+~1 · m
+~ 2 /|m1 ||m2 |, in the function of the interaction
+strength x.
+III.
+PROBLEM 3. PHASE TRANSITION IN
+2-DIMENSIONAL ISING MODEL
+Suppose a periodic 2-dimsional lattice with lateral
+length L. (therefore total L2 sites within.) At each site,
+identical spin with value si ∈ {−1, 1} is occupied. Each
+spin interacts with neighbor spins with energy −Jsi sj
+and temperature T = 1/β, therefore overall Hamiltonian
+reads
+X
+H {s1 , ..., si } = −J
+si sj
+(5)
+j∈N(i)
+where set of spins {N(i)} is a neighbor set of spin si . The
+main observable of this system will be spin per site M ,
+energy per site E, and order parameters magnetization
+|M | and specific heat C, defined as follows;
+M=
+E=
+1 X
+si
+N i
+−J X
+2N
+(M ∈ [−1, 1])
+si sj
+(6)
+(7)
+j∈N(i)
+|M |2 = (hM 2 i − hM i2 )
+CV = β 2 (hE 2 i − hEi2 )
+(8)
+(9)
+Where angled bracket means ensemble average, which
+average is average over sample with weight corresponding
+to probability. Note that energy per site is divided by 2
+to compensate double-counting.
+Now, you will observe phase transition of this system
+with Markov Chain Monte Carlo (MCMC). Naive ensemble average (or, full-counting average) takes a lots of
+computation, due to involving too much irrelevant (less
+probable; such as all-up configuration) configurations.
+Using what we learned in class, you will construct a
+set of samples (or, ensemble) to calculate above order
+parameters.
+Procedure
+Setup
+1) Define system parameters.
+(number of spins N ,
+Interaction strength βJ). Choose basic system size L
+suitable to your computer speed. Typical selection will
+be around L ∼ 30 Also, choose appropriate temperature
+near the transition temperature Tc
+2) Allocate initial configuration. Typical choice will be
+assigning up/down randomly.
+Collecting Ensembles
+1) From a configuration, randomly flip a single spin,
+and calculate acceptance ratio. You may use either
+Metropolis choice or Gibbs choice of acceptance.
+2) If accepted, use accepted spin configuration. If not,
+use current configuration.
+3) Calculate the observables.
+4) Repeat 1-3) multiple times to collect many ensembles
+as you can. Note that the system needs to be “stabilized”, so you need burn-in process to ensure this state
+is in stationary state.
+Measurement
+1) For fixed size L, calculate order parameters |M |2 , CV
+for various temperature.
+2) Do the upper calculation for system with length
+L, 2L, 3L.
+Problems
+A) Plot some of the spin configuration for different
+temperature, with largest system size. Can you see the
+domain formed?
+B) Plot |M |2 (T, N ) by T . Draw multiple lines for
+N . Can you see phase transition? If so, what is its
+characteristics?
+Suggest a method to calculate its
+critical exponents. Discuss what we can observe from
+characteristcs of different system size.
+C) Plot CV (T, N ) by T .
+N . Same as above.
+Draw multiple lines for
+D) Do the same approach above in hexagonal lattice. (also known as Honeycomb lattice) Does the phase
+transition character changes about lattice structure?
+IV.
+NOTES
+This homework is due June 5th (Sun) 23:59:59P.M..
+Please submit your answer with discussion and resulting
+diagram included in report. TA’s are greatly thankful
+to all of the students. We wish you all have good term
+project and other finals.

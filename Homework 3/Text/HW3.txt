@@ -1,0 +1,134 @@
+PH413 Introduction to Computational Physics : Homework 3 Problems
+Seungwoong Ha∗
+Ph413TA, Complex Systems and Statistical Physics Lab,
+Department of Physics, KAIST, Daejeon, Korea
+Hawoong Jeong†
+Department of Physics, KAIST, Daejeon, Korea
+(Dated: May 10, 2022)
+RANDOM DEPOSITION AND DIFFUSION
+MODEL
+Random Deposition and Diffusion Model (RDD
+Model) describes random surface growth with diffusion.
+Compared to random deposition model, actual experi-
+mental surface is less rough. Family(1986) introduced
+the diffusion where newly arriving particles will likely to
+have more stable state by diffusing neighbor sites.
+The original model consists of line of L sites, with periodic boundary condition so that columns i and i + L
+are equivalent. Only nearest-neighbor diffusion is considered, i.e. a particle dropped in column i sticks to the top
+of column, and diffuse to the neighbor column i + 1, i − 1
+if the neighbor has smaller height. If neighbor columns
+have the same height, one of the neighbor column is randomly chosen.
+Width is used as order parameter to describe the surface, which is defined as
+In this example, you will generate some “realistic” fractal objects with a set of linear transformation. Suppose a set of linear mapping in a 2-Dimensional plane
+, as follows :
+Where for each transformation(or, path) i, six coefficients
+ are given as constants.
+Starting from a initial position (x0 , y0 ), you choose one
+of given paths with probability pi to obtain (x1 , y1 ). Iterate the process up to certain order n, and plot each
+points (xn , yn ). If you plot enough many points, then a
+beautiful structure will appear.
+Paths
+(1)
+and it is known that width has scaling relation as follows.
+TABLE I. Example : Gosari
+(2)
+QUESTIONS
+which results
+(3)
+QUESTIONS
+1. Draw a single instance of growing surface.
+2. Use your simulation result to obtain the roughness
+exponent α and growth exponent β.
+Tips : To obtain clear scaling relation, sample number
+is important. There are also a way to make this process
+simpler to increase the simulation speed.
+1. Reproduce the geometry on the figure with given
+coefficients.
+2. Make your own fractal geometry with your own coefficients.
+3. Calculate the fractal dimension with each geometry
+with box-counting method.
+Hint : to determine the coefficients, you need your
+points not to diverge when iterates. What condition in
+eigenvalues in transformation matrix is needed to ensure
+transformation not to divergent?
+III.
+∗ skyround2002@gmail.com
+† hjeong@kaist.edu
+GENERATING FRACTAL WITH
+PROBABILISTIC ITERATION
+LOCAL STRUCTURE OF WEB PAGES
+As we learned in class, web pages also can be expressed
+as a network. In this problem, you will perform actual
+scale, which leads a general characteristic of distribution
+of such numbers.
+QUESTIONS
+1. With the fact that the random number which obeys
+the Benford’s law is not scale-specific, derive Benford’s law.
+2. Using actual number data, confirm that the numbers obey the Benford’s law. Note that not all the
+set of random numbers obey Benford’s law; you will
+have to select appropriate set of number to see the
+law.
+3. Multiply all the numbers into some constants, and
+verify that still the Benford’s law holds.
+FIG. 1. Resulting diagram with coefficients given in Table I
+web crawling to collect web page links and find its
+connection structure.
+4. Transform the numbers from Decimal into Octal
+and Hexadecimal, and verify that still the Benford’s
+law holds. Hint : Each languages support decimal
+to Oct/Hex transformation functions.
+V.
+VERIFICATION OF ZIPF’S LAW
+QUESTIONS
+1. Starting from any pages you want, obtain a list of
+links and parse each page via any method you prefer. (e.g. java URL - Jsoup, Python urllib -
+beautifulsoup, Lynx) Iterate until you get enough
+number of web pages.
+2. Draw the network of web pages, and plot the degree
+distribution of the network.
+Hints :
+1) Because the web pages have so many links, using
+closed or limited set of links will be better to observe the
+local structure. The sample data I suggest is wikipedia
+or similar wikis, without external links.
+2) Try not to collect too far : set a maximum depth
+(about 3 to 5), and collect the list of links. Note that
+Pajek can express graph size less than order of 10000.
+Zipf’s law, named after the linguist at Harvard George
+Kingsley Zipf (1902-1950), is an observation that frequency of occurrence of some event P (i), as a function of
+the rank i when the rank is determined by the above frequency of occurrence, is a power-law function P (i) ∼ i−α
+with the exponent close to 1.
+The most famous example of Zipf’s law is the frequency of English words. (See ).
+Note
+that in a count of the top 50 words in 423 TIME
+magazine articles (total 245,412 occurrences of words),
+“the” ranks as the number one (appearing 15861 times),
+“of” as number two (appearing 7239 times), “to” as the
+number three (6331 times), etc. satisfies above Zipf’s
+Law.
+QUESTIONS
+IV.
+BENFORD’S LAW
+Benford’s Law states that if we randomly select a number from a table of physical constants or statistical data,
+the probability that the first digit will be a “1” is about
+0.301, rather than 0.11(= 1/9) as we might expect if all
+digits (1, 2, ..., 9) were equally likely. In general, the law
+states that the probability of the first digit being a “d”
+is log10 (1 + 1/d).
+The Benford’s law is applied for the numbers with
+non-dimensionless variable. Those numbers are rep-
+resented as different value with different scales, e.g.
+length of 1 meter changes to 0.5 meter. However, the
+distribution of the first digit must not change for any
+1. Find your own example following Zipf’s law, and
+draw the rank-frequency diagram of words in a
+text to verify Zipf curve. (for example, find one
+e-book and measure the frequency distribution of
+the words in that book.)
+VI.
+NOTES
+This homework is due SUN May 29th 23:59:59.
+Write your report about answers including diagrams and
+detailed discussions. Please submit your report and
+codes. If you have any questions about this homework,
+use question board in KLMS or personally e-mail to TA.

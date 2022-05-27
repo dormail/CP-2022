@@ -1,0 +1,112 @@
+PH413 Introduction to Computational Physics : Homework 2 Problems
+Seungwoong Ha
+Ph413TA, Complex Systems and Statistical Physics Lab,
+Department of Physics, KAIST, Daejeon, Korea
+Hawoong Jeong
+Department of Physics, KAIST, Daejeon, Korea
+(Dated: April 20, 2022)
+I.
+DIFFERENTIAL EQUATION
+Solve the following differential equation in x = [0 : 5]
+dy
+= t(1 − y 2 )
+dt
+(1)
+from initial condition y(0) = −0.5, with following methods.
+• Euler method
+2. Using Newton’s method, find the basin of attraction in each solution of z 3 = 1 in complex plane.
+Set the range as |z| < 1.5, and use the appropriate
+resolution (e.g. 640 × 640), and mark the resulting solution as different color or marker. If you
+are familiar to pm3d map, it is encouraged to draw
+the geometry as heat map with color as basin, and
+iteration number as brightness.
+3. Calculate the fractal dimension of a single basin
+of attraction. You may measure the dimension of
+either boundary or area or the solution basin, but
+the value will differ.
+• 4th order Runge-Kutta method (RK4)
+• Any other method you can find elsewhere
+With given methods above, compare your results with
+exact solution and calculate the error.
+III.
+PROBLEM. ROESSLER’S ATTRACTOR
+AND PERIOD BIFURCATION
+QUESTIONS
+1. Plot the error function e(t) = y(t) − ynumeric (t) for
+some dt for each methods.
+2. Compare your accumulated error with in various
+step size to find the order of each numerical integration algorithms.
+II.
+Based on equillibrium dynamics on chemical reaction,
+Roessler designed a non-linear continuous-time dynamical system to study a chaotic behavior(1976). The equation defining the Roessler system are given as follows:
+dx
+= −y − z
+dt
+dy
+= x + ay
+dt
+dz
+= b + z (x − c)
+dt
+SOLUTION OF EQUATION AND BASIN OF
+ATTRACTION
+In this problem, you will find solution of a equation
+by Newton’s method. Newton’s method provides faster
+convergence than statistical inference methods. The solution is stable for locally monotonic function.
+QUESTIONS
+1. Use Newton’s method to solve the equation
+0=
+1 1 2
+1
++ x − x sin x − cos 2x
+2 4
+2
+(2)
+with x0 = π2 . Iterate using Newton’s method until
+an accuracy of 10−5 is obtained. Explain why the
+result seems unusual for Newton’s method. Also,
+solve the equation with x0 = 5π and x0 = 10π.
+∗ skyround2002@gmail.com
+† hjeong@kaist.edu
+(3)
+(4)
+(5)
+QUESTIONS
+1. Roessler studied the chaotic attractor with a = 0.2,
+b = 0.2 with varying c. For fixed constants a, b
+and c, trajectory in each system will converge to
+limited-cycle quasiperiodic motion. While increasing c, you will have different curves. Draw several
+kinds of those limit cycles.
+2. Obtain a series of local maximum value of y in each
+quasiperiod. Let yi be the local maximum value in
+ith quasiperiod, plot the relation of yi and yi+1 .
+3. Plot all the local maximum y values yi for c.
+Tips : This problem is using numerical integration, therefore you must take care of the numerical errors. Also, the
+periodic motion is well defined on stable limit cycle,2
+so careful consideration about the initial condition and
+relaxation is needed.
+IV.
+PROBLEM. DIFFUSION-LIMITED
+AGGREGATION
+Diffusion-limited aggregation(DLA) is the process
+which particles with Brownian motion cluster together
+and aggregates. Make your own DLA cluster in 2 dimension, square lattice.
+QUESTIONS
+1. Draw your DLA cluster.
+2. Measure the fractal dimension Df of your DLA
+cluster.
+Bonus Make your DLA in triangular lattice, and repeat
+the problem above.
+Tips : Larger cluster size will help for better measurement in box counting algorithm. When drawing larger
+plot (dimension larger than 400,600 points), use data size
+equal to output pixels and use with dots style for faster
+drawing.
+V.
+NOTES
+This homework is due SUN May. 15th 23:59:59.
+Write your report about answers including diagrams and
+discussions. Please submit your report and codes. Your
+report should contain discussions about each problem.
+Please write your report via LATEXwith graphs drawn
+with pyplot. If you have any questions about this homework, use question board in KLMS or personally e-mail
+to TA.
