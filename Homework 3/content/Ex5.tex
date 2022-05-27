@@ -1,3 +1,22 @@
 \section{Verification of Zipf`s law}
 \label{sec:exercise-5}
+In the following we will verify Zipf`s law, which describes the statistical behaviour of words in texts. It states that
+the $n$-th most common word has $A/n$ appearences in the text. As a data set I used the four Homework sheets from this
+course. To extract
+the words I Ctrl-A Ctrl-C`ed the PDF of the sheets and pasted it in a text file. The line breaks with a dash (-) had to
+be fixed manually. They have been imported in Python which counted the words after little cleaning (e.g. removing
+linebreaks alltogether and removing dots, kommas). Afterwards I used the most appearing word`s occurences (which was
+``a`` with $A = 1175$ occurences) and drew the curve according to this initial value. 
+
+The result is shown in \autoref{fig:zipf} for the 50 most common words. 
+While the law performs well for words in 10th place and above, it is not so reliable for 2nd until 5th place. Those
+values can be quite unstable because the letter `a` is not only common in the english language but also hat appearences
+in equations. Other letters which have a similar problem but do not appear as a single word (e.g. i, x, e) have been
+excluded.
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex5.pdf}
+  \caption{Plot of appearences and behaviour according to Zipf`s law.}
+  \label{fig:zipf}
+\end{figure}
 
