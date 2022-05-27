@@ -1,3 +1,25 @@
 \section{Generating fractal with probabilistic iteration}
 \label{sec:exercise-2}
 
+\subsection{Generating a fractal and rebuilding one}
+I reproduced the fractal in \autoref{fig:fractal}.
+
+\subsection{Measuring fractal dimension}
+Luckily the fractals are embedded in a 2D-Surface so we can use the box counting method. With the box counting method,
+the whole surface gets covered with $N$ boxes to approximate the surface of the fractal. In an iteration the boxes are
+made smaller and $N$ gets raised. If you have a nice, well behaving two dimensional object, doubling $N$ (so splitting
+boxes in half) results in approximately double the amount of boxes filled. With a fractal however, this can be any
+number. In \autoref{fig:fractal-dimension} this can be seen for the given fractal.
+
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/my_rebuild.png}
+  \caption{The fractal as described in the exercise.}
+  \label{fig:fractal}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/fractal_dimension.png}
+  \caption{The result of box counting for \autoref{fig:fractal}. The curve fit suggests a dimension of $\frac12$.}
+  \label{fig:fractal-dimension}
+\end{figure}
