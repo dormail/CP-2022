@@ -30,6 +30,33 @@ the surface is shown after $L$, $10L$ and $100L$ particles dropped with $L=50$.
   \label{fig:growing-surface-100}
 \end{figure}
 
+\subsection{Roughness exponent}
+To measure the roughness exponent $\alpha$ many surfaces are going to be simulated for different $L$. As it will be
+shown later $W(L,t)$ has a large variance, so the procedure is as following:
+\begin{itemize}
+  \item Choose $L$
+  \item Have $10$ surface instances growing for a large time $T \gg L$
+  \item Measure $W(L,t)$ and take the average for the interval $t > t_x$. For simplicity we chose $t_x = L$.
+\end{itemize}
+The result of this procedure is a function $W_\text{ave}(L)$ which we can analyse. In particular we are looking for the
+roughness exponent which we get by fitting the polynomial 
+\[
+  W(L) = A L^\alpha
+\]
+to the measured $W$. This gives us
+\[
+  \alpha = 0.187 \pm 0.014.
+\]
+The measured data and curve fit function are plotted in \autoref{fig:alpha}.
+
+
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex1-alpha.pdf}
+  \caption{The surface`s roughness after a long time for different $L$.}
+  \label{fig:alpha}
+\end{figure}
+
 \subsection{Growth exponent }
 In this part the behavior for small $t$, get analysed. According to the exercise the roughness can be described by
 \[
