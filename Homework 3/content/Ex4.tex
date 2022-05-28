@@ -7,12 +7,37 @@ distributed logarithmically
   \label{eqn:benford}
 \end{equation}
 and is based on the assumption that the dataset is not limited to specific to a scale.
-%
-%
-% The proof
-%
-%
+\subsection{Deriving Benford`s law}
+The requirement that numbers are distributed scale free implies that
+\[
+  \frac{p(x)}{p(y)} = \frac{p(ax)}{p(ay)}
+\]
+where $x$, $y$ are numbers behaving according to benfords law and $a\in\mathbb R$. By rearranging and using the
+normalization of the distribution we get
+\begin{align}
+  \frac{p(x)}{p(y)} 
+  &=\frac{p(ax)}{p(ay)} \\
+  \Leftrightarrow
+  p(x)
+  &=\frac{p(ax)}{p(ay)} p(y) \\
+  \Leftrightarrow
+  \underbrace{\int_{-\infty}^{\infty} p(x) \, \symup{d}x}_{1}
+  &= \frac{p(y)}{p(ay)} \underbrace{\int_{-\infty}^{\infty} p(ax) \, \symup{d}x}_{1/a} \\
+\end{align}
+By setting $y=1$ we get
+\[
+  p(a) = \frac{p(1)}{a}.
+\]
+Since this function is not normalizable, a cutoff needs to be set, e.g. having limited amount of digits. If one is
+interested in knowing the probability of a number with a leading digit $D$, he can compute
+\begin{align}
+  p(D, D+1) &= \int_D^{D+1} p(x) \, \symup{d}x
+  =
+  \log\left(D+1\right) - \log(D) \\
+            &= \log\left(1 + \frac1D\right).
+\end{align}
 
+\subsection{Applying Benford`s law to a dataset}
 One example for a dataset that obeys Benfords law are physical constants, which can be scraped from wikipedia as it has
 been done in the programming tutorial. \autoref{fig:benford-decimal-1} shows the distribution for the first digit in the
 dataset and shows good agreement between the real distribution and what Benfords law suggests. The scale free behaviour
@@ -23,26 +48,26 @@ One really fancy feature of Benford`s law is that it can be applied to different
 the logarithm in \autoref{eqn:benford}, it can be applied to every other system as well. \autoref{fig:benford-octal} and
 \autoref{fig:benford-hexadec} show that it is still applicable for octal (base 8) and hexadecimal (base 16).
 \begin{figure}
-	\centering
+  \centering
   \includegraphics[width=0.5\textwidth]{build/Ex4-decimal.pdf}
   \caption{Benfords law for decimal system.}
   \label{fig:benford-decimal-1}
 \end{figure}
 \begin{figure}
-	\centering
+  \centering
   \includegraphics[width=0.5\textwidth]{build/Ex4-decimal-factor5.pdf}
   \caption{Scale free behaviour of Benford`s law: The same distribution as in \autoref{fig:benford-decimal-1} with the
   dataset multiplied with $5$.}
   \label{fig:benford-decimal-5}
 \end{figure}
 \begin{figure}
-	\centering
+  \centering
   \includegraphics[width=0.5\textwidth]{build/Ex4-octal.pdf}
   \caption{Benfords law for octal (base 8) number system.}
   \label{fig:benford-octal}
 \end{figure}
 \begin{figure}
-	\centering
+  \centering
   \includegraphics[width=0.5\textwidth]{build/Ex4-hexadec.pdf}
   \caption{Benfords law for hexadecimal (base 16) number system.}
   \label{fig:benford-hexadec}
