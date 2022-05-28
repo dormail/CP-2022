@@ -1,3 +1,73 @@
 \section{Random deposition and diffusion model}
 \label{sec:exercise-1}
+For this part the random deposition and diffusion model has been implemented in python as it has been discussed in the
+lecture. 
 
+\subsection{Drawing a growing surface}
+\label{sec:RDD-drawing}
+Since the behavior of the surface is closely related to the size $L$, the images are provided with a proportionality
+between $L$ and the number of particles deposited and diffused on it. In 
+\autoref{fig:growing-surface-1},
+\autoref{fig:growing-surface-10} and
+\autoref{fig:growing-surface-100}
+the surface is shown after $L$, $10L$ and $100L$ particles dropped with $L=50$.
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex1-draw-1.pdf}
+  \caption{The growing surface after $L = 50$ iterations.}
+  \label{fig:growing-surface-1}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex1-draw-10.pdf}
+  \caption{The growing surface after $10L = 500$ iterations.}
+  \label{fig:growing-surface-10}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex1-draw-100.pdf}
+  \caption{The growing surface after $100L = 5000$ iterations.}
+  \label{fig:growing-surface-100}
+\end{figure}
+
+\subsection{Growth exponent }
+In this part the behavior for small $t$, get analysed. According to the exercise the roughness can be described by
+\[
+   W(L,t) = At^\beta.
+\]
+As it can be seen in \autoref{fig:instable-W}, the exact growth and width can depend on the run because of the random
+nature of the model. 
+
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/many_widths.pdf}
+  \caption{Multiple runs of growing surface to show the instabilty of $W(L=50,t)$.}
+  \label{fig:instable-W}
+\end{figure}
+Because of that, for the next analysis, $W(L,t)$ gets computed as an average over $100$ runs. Although the runtime is
+suffering, the results are more stable.
+
+For $L=T=50$ we get a curve fit result of
+\[
+  \beta = 0.353 \pm 0.007.
+\]
+To check wether this value is independent of $L$, the same analysis has been done with $L = T = 100$ with a fit result
+of
+\[
+  \beta = 0.358 \pm 0.005,
+\]
+Which is in good aggrement with $\beta(L=T=50)$. The actual data of $W(L,t)$ and the curve fits are shown in
+\autoref{fig:beta50} and
+\autoref{fig:beta100}.
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/beta_50.pdf}
+  \caption{$W(L=50,t)$, averaged over 100 runs.}
+  \label{fig:beta50}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/beta_100.pdf}
+  \caption{$W(L=100,t)$, averaged over 100 runs.}
+  \label{fig:beta100}
+\end{figure}
