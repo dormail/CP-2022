@@ -1,3 +1,22 @@
 \section{Local structure of web pages}
 \label{sec:exercise-3}
+For the network analysis we use wikipedia articles. First some python functions scraping the links of articles has been
+written. After naming a starting article has been named, the graph gets filled with $N$ nodes, each corresponding to a
+article. Later a function is iterating through each nodes article and adds the graph edges.
+
+A visualization is shown in \autoref{fig:Ex3-network}. By counting the edges we can also show the distribution of degree
+for edges, shown in \autoref{fig:Ex3-edges}.
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex3-network_graph.pdf}
+  \caption{Visualization of the network. Because it is computationally infeaseble to go deep since the article number
+  grows exponentially the starting article is a well connected center.}
+  \label{fig:Ex3-network}
+\end{figure}
+\begin{figure}
+	\centering
+  \includegraphics[width=0.5\textwidth]{build/Ex3-edges.pdf}
+  \caption{Distribution of the amount of neighbours for articles.}
+  \label{fig:Ex3-edges}
+\end{figure}
 
